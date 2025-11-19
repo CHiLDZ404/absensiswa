@@ -1,88 +1,34 @@
-# 🚀 Panduan Setup Proyek Laravel
+# EZIN — Converted Next.js scaffold
 
-<div class="alert alert-info">
-<strong>📌 Prerequisite:</strong> Pastikan sudah terinstall:
-- PHP ≥ 8.1
-- Composer
-- Node.js & npm
-- Git
-</div>
+This repository is an initial conversion of the uploaded Laravel project into a **Next.js** app so it can be deployed to **Vercel** and hosted on **GitHub**.
 
-## 📥 1. Clone Repository
+**What I created (initial pass)**
+
+- Minimal Next.js scaffold (pages, API placeholder)
+- Copied frontend view assets and saved original Blade templates into `/views_backup` for reference.
+- Added README with deployment and migration guidance.
+
+**Important notes / manual steps you must do**
+1. Database, authentication, and server-side business logic in Laravel were **NOT** automatically migrated.
+   - You should port your models and controllers into Node/Next API routes or a separate backend (e.g. Express, Prisma, Supabase).
+   - SQL schema is available at `erikpra2_eizin.sql` in the original files (copied to `/original_files`).
+2. Blade templates were converted to simple React pages as placeholders. You'll need to refine HTML/CSS and client-side logic.
+3. Static assets (images, css, js) were copied where possible to `/public/static`.
+4. Environment variables: create `.env.local` for Next.js and `VERCEL` project settings when deploying.
+
+**How to run locally**
 ```bash
-git clone https://github.com/username/repo-project.git
-cd repo-project
-```
-
-## 🔑 2. Setup Environment
-```bash
-cp .env.example .env
-php artisan key:generate
-```
-
-<div class="alert alert-warning">
-<strong>⚠️ Penting:</strong> Edit file <code>.env</code> dengan konfigurasi:
-1) Database credentials
-2) Mail server settings
-3) Konfigurasi lainnya. 
-    Untuk mengatur server SMTP Gmail, Anda perlu memasukkan informasi berikut di pengaturan aplikasi email Anda: Server SMTP: smtp.gmail.com, Port: 587 (TLS) atau 465 (SSL), Nama Pengguna: Alamat email Gmail Anda, Kata Sandi: Kata sandi Gmail Anda, dan pastikan untuk mengaktifkan otentikasi. Gunakan app passwordnya jika memungkinkan : https://support.google.com/mail/answer/185833?hl=id
-</div>
-
-## 📦 3. Install Dependencies
-```bash
-composer install --no-dev
+cd your-repo
 npm install
-npm run build
+npm run dev
 ```
 
-## 🗃️ 4. Setup Database
-```bash
-php artisan migrate --seed
-```
-
-## 🔗 5. Storage Link (Jika perlu)
-```bash
-php artisan storage:link
-```
-
-## ⚡ 6. Optimasi Aplikasi
-```bash
-php artisan optimize
-```
-
-## 🚦 7. Jalankan Development Server
-```bash
-php artisan serve
-```
-
-## 🔧 Perintah Tambahan
-```bash
-# Clear cache
-php artisan cache:clear
-
-# Generate IDE helper
-php artisan ide-helper:generate
-
-# Jalankan test
-php artisan test
-```
-
-## 🛠️ Troubleshooting
-### Error Permission
-```bash
-chmod -R 775 storage/
-chmod -R 775 bootstrap/cache/
-```
-
-### Error Class Not Found
-```bash
-composer dump-autoload
-```
+**How to deploy to Vercel (overview)**
+1. Push this repo to GitHub.
+2. Create a new Vercel project and connect your GitHub repo.
+3. Set environment variables in Vercel (DATABASE_URL, etc.) and deploy.
 
 ---
 
-**Catatan**:  
-- Untuk production, gunakan `--no-dev` pada composer instal
-- Notifikasi WA membutuhkan langganan API WA
-- key pada setting WA adalah token.secret (gabungan token dan secret) penyedia API lain mungkin hanya membutuhkan token saja.
-  
+Files created in `/mnt/data/ezin_converted_nextjs`.
+Original project files are copied to `/mnt/data/ezin_converted_nextjs/original_files` for reference.
